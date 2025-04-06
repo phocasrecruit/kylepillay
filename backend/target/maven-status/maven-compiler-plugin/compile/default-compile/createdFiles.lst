@@ -1,0 +1,11 @@
+com/phocas/exercise/desks/Constants.class
+com/phocas/exercise/desks/AppConfiguration.class
+com/phocas/exercise/desks/GraphQLSchemaPrinter.class
+com/phocas/exercise/desks/InstantCoercing.class
+com/phocas/exercise/desks/ApiContext.class
+com/phocas/exercise/desks/schema/Person.class
+com/phocas/exercise/desks/SampleData.class
+com/phocas/exercise/desks/App.class
+com/phocas/exercise/desks/schema/Person$DogStatus.class
+com/phocas/exercise/desks/AppConfiguration$1.class
+com/phocas/exercise/desks/schema/Team.class

@@ -1,0 +1,9 @@
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/ApiContext.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/App.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/AppConfiguration.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/Constants.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/GraphQLSchemaPrinter.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/InstantCoercing.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/SampleData.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/schema/Person.java
+/workspaces/PhocasSoftwareTechnicalAssesment/backend/src/main/java/com/phocas/exercise/desks/schema/Team.java
