@@ -3,6 +3,7 @@ import { Box, Typography, Paper, Tooltip, Divider, LinearProgress } from '@mui/m
 import PetsIcon from '@mui/icons-material/Pets';
 import BlockIcon from '@mui/icons-material/Block';
 import GroupsIcon from '@mui/icons-material/Groups';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { PEOPLE_QUERY } from '../queries/people';
 import { calculateDeskLayout } from '../calculateDeskLayout';
 import { PeopleQuery } from '../generated/graphql';
@@ -127,6 +128,7 @@ export default function LayoutPage() {
                     }}>
                       {person.dogStatus === 'HAVE' && <PetsIcon sx={styles.deskIcon} />}
                       {person.dogStatus === 'AVOID' && <BlockIcon sx={styles.deskIcon} />}
+                      {person.dogStatus === 'LIKE' && <FavoriteIcon sx={styles.heartIcon} />}
                       <Typography variant="caption" sx={styles.deskNumber}>
                         {person.position}
                       </Typography>
@@ -157,7 +159,8 @@ export default function LayoutPage() {
             <Typography variant="body2" color="text.secondary">
               {group.members.length} members • 
               Dogs: {group.members.filter(m => m.dogStatus === 'HAVE').length} • 
-              Avoiders: {group.members.filter(m => m.dogStatus === 'AVOID').length}
+              Avoiders: {group.members.filter(m => m.dogStatus === 'AVOID').length} • 
+              Likes: {group.members.filter(m => m.dogStatus === 'LIKE').length}
             </Typography>
           </Paper>
         ))}
@@ -240,6 +243,11 @@ const styles = {
   deskIcon: {
     fontSize: '1.2rem',
     color: 'text.primary',
+  },
+  heartIcon: {
+    fontSize: '1.2rem',
+    color: '#ffffff', // Changed to white
+    filter: 'drop-shadow(0 0 1px rgba(0,0,0,0.5))'
   },
   deskNumber: {
     position: 'absolute',
