@@ -13,48 +13,62 @@ import com.phocas.exercise.desks.ApiContext;
 
 public class Team extends Table {
 
-	private final String name;
+    private String name;
 
-	@JsonCreator
-	public Team(String name) {
-		this.name = name;
-	}
+    @JsonCreator
+    public Team(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public List<Person> getMembers(ApiContext context) {
-		return context.database().getLinks(this, Person.class);
-	}
+	public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(name);
-		return result;
-	}
+    public List<Person> getMembers(ApiContext context) {
+        return context.database().getLinks(this, Person.class);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (!super.equals(obj)) return false;
-		if (getClass() != obj.getClass()) return false;
-		Team other = (Team) obj;
-		return Objects.equals(name, other.name);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), name);
+    }
 
-	@Query
-	public static List<Team> teams(ApiContext context) {
-		return context.database().query(Team.class);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Team other = (Team) obj;
+        return Objects.equals(getId(), other.getId()) &&
+               Objects.equals(name, other.name);
+    }
 
-	@Mutation
-	public static Team putTeam(ApiContext context, @Id Optional<String> id, String name) {
-		var team = new Team(name);
-		team.setId(id.orElse(context.database().newId()));
-		return context.database().put(team);
-	}
+    @Query
+    public static List<Team> teams(ApiContext context) {
+        return context.database().query(Team.class);
+    }
 
+    @Mutation
+    public static Team putTeam(ApiContext context, @Id Optional<String> id, String name) {
+		if (id.isEmpty()) {
+			Team newTeam = new Team(name);
+			newTeam.setId(context.database().newId());
+			return context.database().put(newTeam);
+		}
+		
+		String teamId = id.get();
+		Team existing = context.database().get(Team.class, teamId);
+		
+		if (existing == null) {
+			Team newTeam = new Team(name);
+			newTeam.setId(teamId);
+			return context.database().put(newTeam);
+		}
+		
+		existing.setName(name); 
+		return context.database().put(existing);
+    }
 }
