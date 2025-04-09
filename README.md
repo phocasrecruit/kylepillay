@@ -1,5 +1,6 @@
 # Phocas Desk Layout exercise
 
+
 ## Background
 This exercise focuses on modifying a simple application that arranges desks for a set of teams, with each person having preferences around dogs. The primary goal is to showcase your problem-solving skills by implementing a desk layout algorithm and optionally adding or modifying features in the project. There are other tasks that allow you to demonstrate your ability to work with either frontend or backend code, handle data state, and deliver clean and maintainable solutions. The application uses a React/TypeScript frontend paired with a Spring Boot Java backend.
 
